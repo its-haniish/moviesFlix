@@ -26,13 +26,19 @@ app.get("/", async (req, res) => {
 
         // Fetch movies based on the query
         const movies=await Posts.find(query)
-            .sort({ uid: -1 }) // Sort by ascending ID (customize as needed)
+            .sort({ uid: 1 }) // Sort by ascending ID (customize as needed)
             .skip(skip) // Skip documents for pagination
             .limit(limit); // Limit the number of results
 
         // Count total documents matching the query for pagination
         const totalMovies=await Posts.countDocuments(query);
         const totalPages=Math.ceil(totalMovies/limit);
+
+        // Render the home page with fetched data
+                // redirect to home if no movies found
+                if (totalMovies===0) {
+                    return res.redirect("/");
+                }
 
         res.render("home.ejs", {
             movies,
@@ -89,13 +95,18 @@ app.get("/category/:category", async (req, res) => {
         };
         // Fetch movies based on the query
         const movies=await Posts.find(query)
-            .sort({ uid: -1 }) // Sort by ascending ID (customize as needed)
+            .sort({ uid: 1 }) // Sort by ascending ID (customize as needed)
             .skip(skip) // Skip documents for pagination
             .limit(limit); // Limit the number of results
 
         // Count total documents matching the query for pagination
         const totalMovies=await Posts.countDocuments(query);
         const totalPages=Math.ceil(totalMovies/limit);
+
+        // redirect to home if no movies found
+        if (totalMovies===0) {
+            return res.redirect("/");
+        }
 
         // Render the home page with fetched data
         res.render("home.ejs", {
@@ -148,7 +159,7 @@ app.get("/:slug", async (req, res) => {
 
 
 // Start the server
-mongoose.connect(process.env.MONGO_URI||"mongodb://localhost:27017/movies").then(() => {
+mongoose.connect(process.env.VPS_URI).then(() => {
     console.log("Connected to the database.");
     app.listen(PORT, () => {
         console.log(`The server is live at: http://localhost:${PORT}`);
