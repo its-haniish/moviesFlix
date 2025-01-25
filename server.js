@@ -4,7 +4,7 @@ const path=require("path");
 const app=express();
 const mongoose=require("mongoose");
 const Msgs=require("./models/Msgs.js");
-const PORT=process.env.PORT||8081;
+const PORT=process.env.PORT||8084;
 const Posts=require("./models/Posts.js");
 const { log }=require("console");
 app.use(express.json());
