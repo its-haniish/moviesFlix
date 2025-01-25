@@ -1,0 +1,13 @@
+<a href="/<%= movie.slug %>" class="movie_card">
+  <figure>
+    <img
+      src="<%= movie.poster %>"
+      alt="<%= movie.title %>"
+      loading="lazy"
+      onerror="handleImageError(this)"
+    />
+  </figure>
+  <figcaption>
+    <%= movie.title %>
+  </figcaption>
+</a>

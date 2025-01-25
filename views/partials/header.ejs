@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= title %>
+  </title>
+  <meta name="description" content="<%= description %>" />
+  <meta name="keywords" content="<%= keywords %>" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/contact.css" />
+  <link rel="stylesheet" href="/styles/footer.css" />
+  <link rel="stylesheet" href="/styles/movie_card.css" />
+  <link rel="stylesheet" href="/styles/pagination.css" />
+  <link rel="stylesheet" href="/styles/movie.css" />
+  <script src="/scripts/header.js" ></script>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://movies4uh.tech/" />
+  <meta property="og:locale" content="en_US en_IN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Movies4u" />
+  <meta property="og:url" content="https://movies4uh.tech/" />
+  <meta property="og:site_name" content="Movies4u" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="/scripts/header.js" defer></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZYMY7LBMX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TZYMY7LBMX');
+</script>
+
+</head>
+
+<body>
+  <header>
+    <!-- NAV LINKS AND INPUT -->
+
+        <% 
+        const navLinks = [
+            {
+                title: 'Home',
+                url: '/'
+            },
+            {
+                title: "18+",
+                url: "/?search=18%2B"
+            },
+            {
+                title: "Bollywood",
+                url: "/category/bollywood-movies"
+            },
+            {
+                title: "Dual Audio",
+                url: "/category/dual-audio-movies"
+            },
+            {
+                title: "Web Series",
+                url: "/category/web-series"
+            },
+            {
+                title: "TV Show",
+                url: "/category/netflix"
+            }
+        ];
+        const headerLinks = [
+            {
+                title: 'HOW TO DOWNLOAD',
+                url: 'https://www.hdmovieshub.art/',
+                color:"#64b71e",
+                icon: "fa-solid fa-rocket"
+            },
+            {
+                title: "DESI JUNCTION",
+                url: "/?search=18%2B",
+                color:"#ed4430",
+                icon: "fa-solid fa-pepper-hot"
+            },
+            {
+                title: "CONTACT ME :)",
+                url: "/contact",
+                color:"#239adc",
+                icon: "fa-brands fa-telegram"
+            },
+            {
+                title: "ALLMOVIESHUB",
+                url: "https://www.allmovieshub.live/",
+                color:"#df9925",
+                icon: "fa-solid fa-eye"
+            }
+        ];
+        const categoryLinks = [
+            {
+                title: '18+',
+                url: '/?search=18%2B',
+            },
+            {
+                title: "Bangali",
+                url: "/category/bengali"
+            },
+            {
+                title: "Bollywood",
+                url: "/category/bollywood-movies"
+            },
+            {
+                title: "Hoichoi",
+                url: "/category/hoichoi"
+            },
+            {
+                title: "Dual Audio",
+                url: "/category/dual-audio-movies"
+            },
+            {
+                title: "English",
+                url: "/category/hollywood-hindi-dubbed"
+            },
+            {
+                title: "Gujarati",
+                url: "/category/gujarati"
+            },
+            {
+                title: "Hindi",
+                url: "/category/hindi-dubbed-movies"
+            },
+            {
+                title: "Hollywood",
+                url: "/category/hollywood-hindi-dubbed"
+            },
+            {
+                title: "Sony Liv",
+                url: "/category/sony-live"
+            },
+            {
+                title: "Netflix",
+                url: "/category/netflix"
+            },
+            {
+                title: "Marathi",
+                url: "/category/marathi"
+            },
+            {
+                title: "Punjabi",
+                url: "/category/punjabi"
+            },
+            {
+                title: "South Indian",
+                url: "/category/south-hindi-dubbed"
+            },
+            {
+                title: "Jio Cinema",
+                url: "/category/jiocinema"
+            },
+            {
+                title: "Amzn Prime Video",
+                url: "/category/amzn-prime-video"
+            },
+            {
+                title: "Disney+ Hotstar",
+                url: "/category/disney-hotstar"
+            },
+            {
+                title: "Web Series",
+                url: "/category/web-series"
+            }
+        ];
+        %>
+    <nav >
+
+    <div id="pc_nav">
+      <a id="img_container" href="/">
+      <img src="/images/horizontal_logo.png" alt="movies4u">
+      </a>
+      <div class="nav_links">
+        <% navLinks.forEach((link) => { %>
+          <a href="<%= link.url %>"><%= link.title %></a>
+        <% }) %>
+        <div class="search">
+          <input type="text" placeholder="Search..." id="pc_search_input" />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div id="mobile_nav">
+        <button id="menu_btn" onclick="showAsideNav()">
+        <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a id="img_container" href="/">
+        <img src="/images/horizontal_logo.png" alt="movies4u">
+        </a>
+
+        <button id="search_btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+    </div>
+    </nav>
+
+    <!-- HEADER LINKS AND INPUT -->
+    <section id="header_section">
+
+    <div id="header_search">
+    <input type="text" placeholder="Search movies,series,hindi..." id="header_search_input" />
+    </div>
+
+      <div id="header_links">
+        <% headerLinks.forEach((link) => { %>
+          <a href="<%= link.url %>" style="background: <%= link.color %>; box-shadow: 0 0 5px 0 <%= link.color %>; ">
+            <i class="<%= link.icon %>"></i>
+            <%= link.title %>
+          </a>
+        <% }) %>
+      </div>
+
+      <div id="category_links">
+        <% categoryLinks.forEach((link) => { %>
+          <a href="<%= link.url %>">
+            <i class="<%= link.icon %>"></i>
+            <%= link.title %>
+          </a>
+        <% }) %>
+      </div>
+    </section>
+
+    <aside id="side_nav">
+      <button onclick="hideAsideNav()">
+      <i class="fa-solid fa-close"></i>
+      </button>
+        <% navLinks.forEach((link) => { %>
+          <a href="<%= link.url %>"><%= link.title %></a>
+        <% }) %>    
+    </aside>
+
+  </header>
